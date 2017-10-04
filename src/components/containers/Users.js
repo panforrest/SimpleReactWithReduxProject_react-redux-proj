@@ -43,6 +43,11 @@ class Users extends Component {
 
   render(){
     console.log('RENDER!!')
+    const list = this.props.users.map((user, i) =>{
+      return(
+        <li key={i}>{user.username}</li>
+      )
+    })
 
     return(
       <div style={{padding:24}}>
@@ -50,6 +55,11 @@ class Users extends Component {
         <input onChange={this.onUserUpdate.bind(this, 'username')} type="text" placeholder="username" /><br />
         <input onChange={this.onUserUpdate.bind(this, 'password')} type="password" placeholder="password" /><br />
         <button onClick={this.addUser.bind(this)}>Add User</button>
+
+        <h3 style={{marginBottom:0}}>User List</h3>
+        <ol style={{padding:24}}>
+          {list}
+        </ol>
       </div>
     )
   }
@@ -57,7 +67,7 @@ class Users extends Component {
 
 const stateToProps = (state) => {
   return {
-    user: state.user
+    users: state.user.all
   }
 }
 
