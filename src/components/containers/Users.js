@@ -43,11 +43,6 @@ class Users extends Component {
 
   render(){
     console.log('RENDER!!')
-    const list = this.props.users.map((user, i) =>{
-      return(
-        <li key={i}>{user.username}</li>
-      )
-    })
 
     return(
       <div style={{padding:24}}>
@@ -57,8 +52,12 @@ class Users extends Component {
         <button onClick={this.addUser.bind(this)}>Add User</button>
 
         <h3 style={{marginBottom:0}}>User List</h3>
-        <ol style={{padding:24}}>
-          {list}
+        <ol style={{padding:24, color:'red', fontSize:24}}>
+          {
+          	this.props.user.all.map((user, i)=>{
+          		return <li key={user.username}>{user.username}</li>
+          	})
+          }
         </ol>
       </div>
     )
@@ -67,7 +66,7 @@ class Users extends Component {
 
 const stateToProps = (state) => {
   return {
-    users: state.user.all
+    user: state.user
   }
 }
 
