@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom'
 import store from './stores'
 import { Provider } from 'react-redux'
 // import Intro from './components/presentation/Intro'
-import { Users } from './components/containers'
+
+import { Users, CurrentUsers } from './components/containers'
 
 
 const app = (
 	<Provider store={store.configure(null)}>
-      <Users />
+	  <div>
+        <Users />
+        <CurrentUsers />
+      </div>
 	</Provider>
 )
 

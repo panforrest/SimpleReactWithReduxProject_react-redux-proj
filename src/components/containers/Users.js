@@ -51,14 +51,6 @@ class Users extends Component {
         <input onChange={this.onUserUpdate.bind(this, 'password')} type="password" placeholder="password" /><br />
         <button onClick={this.addUser.bind(this)}>Add User</button>
 
-        <h3 style={{marginBottom:0}}>User List</h3>
-        <ol style={{padding:24, color:'red', fontSize:24}}>
-          {
-          	this.props.user.all.map((user, i)=>{
-          		return <li key={user.username}>{user.username}</li>
-          	})
-          }
-        </ol>
       </div>
     )
   }
