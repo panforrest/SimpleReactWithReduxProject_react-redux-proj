@@ -18,6 +18,8 @@ export default (state = initialState, action) => {
 
     case constants.USER_SELECTED:
       console.log('USER_SELECTED: ' + JSON.stringify(action.data))
+      newState['selected'] = action.data
+      return newState
   
     default:
 	  return state
