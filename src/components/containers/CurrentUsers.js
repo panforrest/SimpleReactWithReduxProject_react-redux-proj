@@ -9,21 +9,25 @@ class CurrentUsers extends Component{
   }
 
   render(){
+    const list = this.props.user.all.map((user, i) => {
+      let name = null
+      if (this.props.selected  == null)
+        name = <a onClick={this.selectUser.bind(this, user)}><span>{user.username}</span></a>
+      else if (this.props.selected.username == user.username)
+        name = <a onClick={this.selectUser.bind(this, user)}><strong style={{color:'red'}}>{user.username}</strong></a>
+      else 
+        name = <a onClick={this.selectUser.bind(this, user)}><span>{user.username}</span></a>
+      return(
+        <li key={user.username}>{ name }</li>
+      )
+    })
+
   	return(
       <div style={{padding:24}}>
-
-        <h3 style={{marginBottom:0}}>User List</h3>
-        <ol style={{padding:24, fontSize:24}}>
-          { (this.props.user.selected == null) ?
-          	this.props.user.all.map((user, i)=>{
-          		return <li key={user.username}><a href="#" onClick={this.selectUser.bind(this, user)}>{user.username}</a></li>
-          	}) :
-            this.props.user.all.map((user, i)=>{
-              return <li key={user.username}><a href="#" onClick={this.selectUser.bind(this, user)} style={{color:'red'}}>{user.username}</a></li>
-            })
-          }
-        </ol>
-      </div> 
+        <ol>
+          { list }
+        </ol>        
+      </div>
   	)
   }
 }
