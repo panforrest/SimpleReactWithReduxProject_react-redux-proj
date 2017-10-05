@@ -1,7 +1,8 @@
 import constants from '../constants'
 
 var initialState = {
-  all: []
+  all: [],
+  selected: {}
 }
 
 export default (state = initialState, action) => {
@@ -14,6 +15,9 @@ export default (state = initialState, action) => {
       updatedList.push(action.data)
       newState['all'] = updatedList
       return newState
+
+    case constants.USER_SELECTED:
+      console.log('USER_SELECTED: ' + JSON.stringify(action.data))
   
     default:
 	  return state

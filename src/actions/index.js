@@ -32,5 +32,12 @@ export default {
         type: constants.USER_CREATED,
         data: user
 	  }
+	},
+
+	selectUser: (user) => {
+	  return{
+		type: constants.USER_SELECTED,
+		data: user
+	  }
 	}	
 }
